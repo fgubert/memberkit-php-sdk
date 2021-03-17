@@ -7,20 +7,15 @@ Um SDK Simples para a API do MemberKit usando PHP
 - [Instalação](#instalação)
 - [Configuração](#configuração)
 - [Transações](#transações)
-  - [Criando uma transação](#criando-uma-transação)
-  - [Capturando uma transação](#capturando-uma-transação)
-  - [Estornando uma transação](#estornando-uma-transação)
-    - [Estornando uma transação parcialmente](#estornando-uma-transação-parcialmente)
-    - [Estornando uma transação com split](#estornando-uma-transação-com-split)
-  - [Retornando transações](#retornando-transações)
-  - [Retornando uma transação](#retornando-uma-transação)
-  - [Retornando recebíveis de uma transação](#retornando-recebíveis-de-uma-transação)
-  - [Retornando um recebível de uma transação](#retornando-um-recebível-de-uma-transação)
-  - [Retornando o histórico de operações de uma transação](#retornando-o-histórico-de-operações-de-uma-transação)
-  - [Notificando cliente sobre boleto a ser pago](#notificando-cliente-sobre-boleto-a-ser-pago)
-  - [Retornando eventos de uma transação](#retornando-eventos-de-uma-transação)
-  - [Calculando Pagamentos Parcelados](#calculando-pagamentos-parcelados)
-  - [Testando pagamento de boletos](#testando-pagamento-de-boletos)
+  - [Lista todas as assinaturas ativas na área de membros](#lista-todas-as-assinaturas-ativas-na-área-de-membros)
+  - [Lista todas as turmas ativas na área de membros](#lista-todas-as-turmas-ativas-na-área-de-membros)
+  - [Lista os membros e respectivas pontuações acumuladas no ranking](#lista-os-membros-e-respectivas-pontuações-acumuladas-no-ranking)
+  - [Lista as pontuações de um membro específico](#lista-as-pontuações-de-um-membro-específico)
+  - [Gera um novo token de autenticação com duração de 1 hora](#gera-um-novo-token-de-autenticação-com-duração-de-1-hora)
+  - [Cadastrar ou Atualizar um Aluno](#cadastrar-ou-atualizar-um-aluno)
+  - [Adiciona uma nova pontuação](#adiciona-uma-nova-pontuação)
+  - [Remove a pontuação adicionada manualmente](#remove-a-pontuação-adicionada-manualmente)
+  - [Marca todas as aulas de um curso como não concluídas](#marca-todas-as-aulas-de-um-curso-como-não-concluídas)
 
 ## Instalação
 
@@ -46,21 +41,21 @@ https://gist.github.com/rainerborene/26bc6b66bbc5dd4f78a1141df31ef718
 
 Nesta seção será explicado como utilizar transações da API do MemberKit utilizando o SDK.
 
-### Lista todas as assinaturas ativas na área de membros.
+### Lista todas as assinaturas ativas na área de membros
 
 ```php
 <?php
 $test = $mk->membership_levels();
 ```
 
-### Lista todas as turmas ativas na área de membros.
+### Lista todas as turmas ativas na área de membros
 
 ```php
 <?php
 $test = $mk->classrooms();
 ```
 
-### Lista os membros e respectivas pontuações acumuladas no ranking.
+### Lista os membros e respectivas pontuações acumuladas no ranking
 
 | Parâmetro    | Descrição            |
 |--------------|----------------------|
@@ -71,7 +66,7 @@ $test = $mk->classrooms();
 $test = $mk->rankings($classrom_id);
 ```
 
-### Lista as pontuações de um membro específico.
+### Lista as pontuações de um membro específico
 
 | Parâmetro    | Descrição            |
 |--------------|----------------------|
@@ -82,7 +77,7 @@ $test = $mk->rankings($classrom_id);
 $test = $mk->user_ranking($user_id);
 ```
 
-### Gera um novo token de autenticação com duração de 1 hora.
+### Gera um novo token de autenticação com duração de 1 hora
 
 | Parâmetro    | Descrição            |
 |--------------|----------------------|
@@ -114,7 +109,7 @@ $test = $mk->token($email);
 $test = $mk->newUser($full_name, $email, $status='active', $blocked=false, $classroom_ids=array(), $unlimited=false, $membership_level_id=null, $expires_at=null);
 ```
 
-### Adiciona uma nova pontuação.
+### Adiciona uma nova pontuação
 
 Para adicionar manualmente uma pontuação ao ranking de um aluno.
 
@@ -147,7 +142,7 @@ Para remover uma pontuação adicionada manualmente ao ranking de um aluno, voc�
 $test = $mk->delete_scores($user_email, $reason, $course_id);
 ```
 
-### Marca todas as aulas de um curso como não concluídas.
+### Marca todas as aulas de um curso como não concluídas
 
 Para marcra todas as aulas de um curso como não concluídas para um aluno em específico.
 
