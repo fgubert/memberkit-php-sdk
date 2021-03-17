@@ -11,5 +11,8 @@
             "name": "Felipe Gubert",
             "email": "felipe.gubert@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {"MemberKit\\": "src/"}
+    },
 }
