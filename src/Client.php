@@ -12,11 +12,6 @@ class Client {
 	 /**
      * @var string
      */
-	const MK_VERSION = '0.1';
-
-	 /**
-     * @var string
-     */
 	const BASE_URI = 'https://memberkit.com.br/api/v1/';
 
 	/**
