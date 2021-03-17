@@ -1,0 +1,15 @@
+{
+    "name": "fgubert/memberkit-php-sdk",
+    "description": "Simple PHP SDK for MemberKit API",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^7.2"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Felipe Gubert",
+            "email": "felipe.gubert@gmail.com"
+        }
+    ]
+}
