@@ -13,6 +13,6 @@
         }
     ],
     "autoload": {
-        "psr-4": {"MemberKit\\": "src/"}
+        "files": ["src/MemberKit.php", "src/Client.php"]
     }
 }
