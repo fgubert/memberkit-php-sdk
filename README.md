@@ -11,6 +11,9 @@ Um SDK Simples para a API do MemberKit usando PHP
   - [Lista todas as turmas ativas na área de membros](#lista-todas-as-turmas-ativas-na-área-de-membros)
   - [Lista os membros e respectivas pontuações acumuladas no ranking](#lista-os-membros-e-respectivas-pontuações-acumuladas-no-ranking)
   - [Lista as pontuações de um membro específico](#lista-as-pontuações-de-um-membro-específico)
+  - [Lista feeds de atividades de um membro específico](#lista-feeds-de-atividades-de-um-membro-específico)
+  - [Lista todos os cursos cadastrados](#lista-todos-os-cursos-cadastrados)
+  - [Retorna dados básicos do curso com módulos e respectivas aulas](#retorna-dados-básicos-do-curso-com-módulos-e-respectivas-aulas)
   - [Gera um novo token de autenticação com duração de 1 hora](#gera-um-novo-token-de-autenticação-com-duração-de-1-hora)
   - [Cadastrar ou Atualizar um Aluno](#cadastrar-ou-atualizar-um-aluno)
   - [Adiciona uma nova pontuação](#adiciona-uma-nova-pontuação)
@@ -75,6 +78,35 @@ $test = $mk->rankings($classrom_id);
 ```php
 <?php
 $test = $mk->user_ranking($user_id);
+```
+
+### Lista feeds de atividades de um membro específico
+
+| Parâmetro    | Descrição            |
+|--------------|----------------------|
+| email |Endereço de email do aluno |
+
+```php
+<?php
+$test = $mk->user_activities($email);
+```
+
+### Lista todos os cursos cadastrados
+
+```php
+<?php
+$test = $mk->courses();
+```
+
+### Retorna dados básicos do curso com módulos e respectivas aulas
+
+| Parâmetro    | Descrição            |
+|--------------|----------------------|
+| course_id | ID do Curso |
+
+```php
+<?php
+$test = $mk->course($course_id);
 ```
 
 ### Gera um novo token de autenticação com duração de 1 hora

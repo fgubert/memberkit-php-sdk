@@ -100,6 +100,18 @@ class Client {
 				$url = self::BASE_URI.'users/'.$id.'/rankings';
 				break;
 
+            case 'user_activities':
+                $url = self::BASE_URI.'users/'.$id.'/activities';
+                break;
+
+            case 'courses':
+                $url = self::BASE_URI.'courses';
+                break;
+
+            case 'course':
+                $url = self::BASE_URI.'courses/'.$id;
+                break;
+
 			case 'token':
 				$url = self::BASE_URI.'tokens';
 				break;
@@ -397,4 +409,88 @@ class Client {
 		}
 		return $this->return_msg;
 	}
+
+    /**
+     * @param int $id
+     * Listar Feed de Atividades
+     * @return array
+     */
+    public function user_activities($id)
+    {
+        $request = new Request('GET', $this->getURL('GET', 'user_activities', $id), $this->getOptions($this->form_params), null);
+        $response = $this->http->send($request, $this->getOptions($this->form_params), null);
+
+        $code = $response->getStatusCode();
+        $body = (string)$response->getBody();
+
+        $this->return_msg['code'] = $code;
+
+        if ($code == 200) {
+            $this->return_msg['message'] = 'success';
+            $this->return_msg['content'] = json_decode($body);
+            $this->return_msg['status'] = true;
+        } else {
+            $this->return_msg['message'] = json_decode($body);
+        }
+        return $this->return_msg;
+    }
+
+    /**
+     * @param int $id
+     * Lista todos os cursos cadastrados.
+     * @return array
+     */
+    public function courses()
+    {
+        $request = new Request('GET', $this->getURL('GET', 'courses'), $this->getOptions($this->form_params), null);
+        $response = $this->http->send($request, $this->getOptions($this->form_params), null);
+
+        $code = $response->getStatusCode();
+        $body = (string)$response->getBody();
+
+        $this->return_msg['code'] = $code;
+
+
+        if ($code == 200) {
+            $this->return_msg['message'] = 'success';
+            $this->return_msg['content'] = json_decode($body);
+            $this->return_msg['status'] = true;
+        } else {
+            $this->return_msg['message'] = json_decode($body);
+        }
+        return $this->return_msg;
+    }
+
+    /**
+     * @param int $id
+     * Retorna dados básicos do curso, lista de módulos e respectivas aulas.
+     * @return array
+     */
+    public function course($id)
+    {
+        $request = new Request('GET', $this->getURL('GET', 'course', $id), $this->getOptions($this->form_params), null);
+        $response = $this->http->send($request, $this->getOptions($this->form_params), null);
+
+        $code = $response->getStatusCode();
+        $body = (string)$response->getBody();
+
+        $this->return_msg['code'] = $code;
+
+
+        if ($code == 200) {
+            $this->return_msg['message'] = 'success';
+            $this->return_msg['content'] = json_decode($body);
+            $this->return_msg['status'] = true;
+        } else {
+            $this->return_msg['message'] = json_decode($body);
+        }
+        return $this->return_msg;
+    }
+
+
+
+
+
+
+
 }
