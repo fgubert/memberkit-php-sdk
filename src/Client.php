@@ -71,8 +71,8 @@ class Client {
 	}
 
 	/**
-     * @param string $method
      * @param string $type
+	 * @param string $method
      * @param int $id
      *
      * @return string
