@@ -71,13 +71,13 @@ class Client {
 	}
 
 	/**
+     * @param string $method
      * @param string $type
-	 * @param string $method
      * @param int $id
      *
      * @return string
      */
-	protected function getURL($type, $method='POST', $id=null) {
+	protected function getURL($method='POST', $type, $id=null) {
 		$url = null;
 		switch ($type) {
 			case 'newUser':
