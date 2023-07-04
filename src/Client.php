@@ -77,7 +77,7 @@ class Client {
      *
      * @return string
      */
-	protected function getURL($method='POST', $type, $id=null) {
+	protected function getURL($type, $method='POST', $id=null) {
 		$url = null;
 		switch ($type) {
 			case 'newUser':
