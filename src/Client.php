@@ -77,7 +77,7 @@ class Client {
      *
      * @return string
      */
-	protected function getURL($method='POST', $type, $id=null) {
+	protected function getURL($type, $method='POST', $id=null) {
 		$url = null;
 		switch ($type) {
 			case 'newUser':
@@ -165,7 +165,7 @@ class Client {
 		if (!empty($expires_at)) $this->form_params['expires_at'] = $expires_at;
 		if (!empty($unlimited)) $this->form_params['unlimited'] = $unlimited;
 
-		$request = new Request('POST', $this->getURL('POST', 'newUser'), $this->getOptions($this->form_params), null);
+		$request = new Request('POST', $this->getURL('newUser', 'POST'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -194,7 +194,7 @@ class Client {
 			'api_key'=>$this->api_key,
 		];
 		
-		$request = new Request('POST', $this->getURL('POST', 'token'), $this->getOptions($this->form_params), null);
+		$request = new Request('POST', $this->getURL('token', 'POST'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -230,7 +230,7 @@ class Client {
 			'api_key'=>$this->api_key,
 		];
 		
-		$request = new Request('POST', $this->getURL('POST', 'scores'), $this->getOptions($this->form_params), null);
+		$request = new Request('POST', $this->getURL('scores', 'POST'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -264,7 +264,7 @@ class Client {
 			'api_key'=>$this->api_key,
 		];
 		
-		$request = new Request('POST', $this->getURL('POST', 'delete_scores'), $this->getOptions($this->form_params), null);
+		$request = new Request('POST', $this->getURL('delete_scores', 'POST'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -296,7 +296,7 @@ class Client {
 			'api_key'=>$this->api_key,
 		];
 		
-		$request = new Request('DELETE', $this->getURL('DELETE', 'delete_lesson_statuses'), $this->getOptions($this->form_params), null);
+		$request = new Request('DELETE', $this->getURL('delete_lesson_statuses', 'DELETE'), $this->getOptions($this->form_params), null);
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
 		$code = $response->getStatusCode();
@@ -319,7 +319,7 @@ class Client {
      */
 	public function membership_levels() 
 	{
-		$request = new Request('GET', $this->getURL('GET', 'membership_levels'), $this->getOptions($this->form_params), null);
+		$request = new Request('GET', $this->getURL('membership_levels', 'GET'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -343,7 +343,7 @@ class Client {
      */
 	public function classrooms() 
 	{
-		$request = new Request('GET', $this->getURL('GET', 'classrooms'), $this->getOptions($this->form_params), null);
+		$request = new Request('GET', $this->getURL('classrooms', 'GET'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -366,7 +366,7 @@ class Client {
      * @return array
      */
 	public function rankings() {
-		$request = new Request('GET', $this->getURL('GET', 'rankings'), $this->getOptions($this->form_params), null);
+		$request = new Request('GET', $this->getURL('rankings', 'GET'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -391,7 +391,7 @@ class Client {
      * @return array
      */
 	public function user_ranking($id) {
-		$request = new Request('GET', $this->getURL('GET', 'user_ranking', $id), $this->getOptions($this->form_params), null);
+		$request = new Request('GET', $this->getURL('user_ranking', 'GET', $id), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -417,7 +417,7 @@ class Client {
      */
     public function user_activities($id)
     {
-        $request = new Request('GET', $this->getURL('GET', 'user_activities', $id), $this->getOptions($this->form_params), null);
+        $request = new Request('GET', $this->getURL('user_activities', 'GET', $id), $this->getOptions($this->form_params), null);
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
         $code = $response->getStatusCode();
@@ -442,7 +442,7 @@ class Client {
      */
     public function courses()
     {
-        $request = new Request('GET', $this->getURL('GET', 'courses'), $this->getOptions($this->form_params), null);
+        $request = new Request('GET', $this->getURL('courses', 'GET'), $this->getOptions($this->form_params), null);
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
         $code = $response->getStatusCode();
@@ -468,7 +468,7 @@ class Client {
      */
     public function course($id)
     {
-        $request = new Request('GET', $this->getURL('GET', 'course', $id), $this->getOptions($this->form_params), null);
+        $request = new Request('GET', $this->getURL('course', 'GET', $id), $this->getOptions($this->form_params), null);
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
         $code = $response->getStatusCode();
