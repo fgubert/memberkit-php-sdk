@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace MemberKit;
 
 class MemberKit
 {
-    const VERSION = '0.1.3';
+    const VERSION = '0.1.5';
 }
