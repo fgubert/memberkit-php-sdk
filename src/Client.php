@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace MemberKit;
 
@@ -23,7 +23,7 @@ class Client {
      * @var string
      */
 	private $api_key;
-	
+
 	/**
      * @var \GuzzleHttp\Client
      */
@@ -33,7 +33,7 @@ class Client {
      * @var array
      */
 	private $options = [];
-	
+
 	/**
      * @var array
      */
@@ -52,8 +52,8 @@ class Client {
 		$this->api_key = $api_key;
 
 		$this->options = [
-						'timeout' => 2, 
-						'http_errors' => false, 
+						'timeout' => 2,
+						'http_errors' => false,
 						'headers'=>['User-Agent' => 'checkout-topinvest/1.0']
 					   ];
 
@@ -77,7 +77,7 @@ class Client {
      *
      * @return string
      */
-	protected function getURL($method='POST', $type, $id=null) {
+	protected function getURL($method='POST', $type=null, $id=null) {
 		$url = null;
 		switch ($type) {
 			case 'newUser':
@@ -128,8 +128,8 @@ class Client {
 				$url = self::BASE_URI.'lesson_statuses';
 				break;
 
-			
-			
+
+
 			default:
 				return false;
 				break;
@@ -159,7 +159,7 @@ class Client {
 			'blocked'=>$blocked,
 			'api_key'=>$this->api_key,
 		];
-		
+
 		if (!empty($classroom_ids)) $this->form_params['classroom_ids'] = implode(',', $classroom_ids);
 		if (!empty($membership_level_id)) $this->form_params['membership_level_id'] = $membership_level_id;
 		if (!empty($expires_at)) $this->form_params['expires_at'] = $expires_at;
@@ -173,7 +173,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 201) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['status'] = true;
@@ -193,7 +193,7 @@ class Client {
 			'email'=>$email,
 			'api_key'=>$this->api_key,
 		];
-		
+
 		$request = new Request('POST', $this->getURL('POST', 'token'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
@@ -202,7 +202,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 201) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -229,7 +229,7 @@ class Client {
 			'course_id'=>$course_id,
 			'api_key'=>$this->api_key,
 		];
-		
+
 		$request = new Request('POST', $this->getURL('POST', 'scores'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
@@ -238,7 +238,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 201) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -263,7 +263,7 @@ class Client {
 			'course_id'=>$course_id,
 			'api_key'=>$this->api_key,
 		];
-		
+
 		$request = new Request('POST', $this->getURL('POST', 'delete_scores'), $this->getOptions($this->form_params), null);
 
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
@@ -272,7 +272,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 201) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -295,7 +295,7 @@ class Client {
 			'course_id'=>$course_id,
 			'api_key'=>$this->api_key,
 		];
-		
+
 		$request = new Request('DELETE', $this->getURL('DELETE', 'delete_lesson_statuses'), $this->getOptions($this->form_params), null);
 		$response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
@@ -303,7 +303,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 201) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -317,7 +317,7 @@ class Client {
 	/**
      * @return array
      */
-	public function membership_levels() 
+	public function membership_levels()
 	{
 		$request = new Request('GET', $this->getURL('GET', 'membership_levels'), $this->getOptions($this->form_params), null);
 
@@ -327,7 +327,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 200) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -341,7 +341,7 @@ class Client {
 	/**
      * @return array
      */
-	public function classrooms() 
+	public function classrooms()
 	{
 		$request = new Request('GET', $this->getURL('GET', 'classrooms'), $this->getOptions($this->form_params), null);
 
@@ -351,7 +351,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 200) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -374,7 +374,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 200) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -399,7 +399,7 @@ class Client {
 		$body = (string)$response->getBody();
 
 		$this->return_msg['code'] = $code;
-		
+
 		if ($code == 200) {
 			$this->return_msg['message'] = 'success';
 			$this->return_msg['content'] = json_decode($body);
@@ -440,9 +440,14 @@ class Client {
      * Lista todos os cursos cadastrados.
      * @return array
      */
-    public function courses()
+    public function courses($currentPage=null)
     {
-        $request = new Request('GET', $this->getURL('GET', 'courses'), $this->getOptions($this->form_params), null);
+        if (!empty($currentPage)) {
+            $request = new Request('GET', $this->getURL('GET', 'courses').'&page='.$currentPage, $this->getOptions($this->form_params), null);
+        } else {
+            $request = new Request('GET', $this->getURL('GET', 'courses'), $this->getOptions($this->form_params), null);
+        }
+
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
         $code = $response->getStatusCode();
