@@ -14,6 +14,7 @@ Um SDK Simples para a API do MemberKit usando PHP
   - [Lista feeds de atividades de um membro específico](#lista-feeds-de-atividades-de-um-membro-específico)
   - [Lista todos os cursos cadastrados](#lista-todos-os-cursos-cadastrados)
   - [Retorna dados básicos do curso com módulos e respectivas aulas](#retorna-dados-básicos-do-curso-com-módulos-e-respectivas-aulas)
+  - [Retorna dados completo de uma aula específica](#retorna-dados-completo-de-uma-aula-espec%C3%ADfica)
   - [Gera um novo token de autenticação com duração de 1 hora](#gera-um-novo-token-de-autenticação-com-duração-de-1-hora)
   - [Cadastrar ou Atualizar um Aluno](#cadastrar-ou-atualizar-um-aluno)
   - [Adiciona uma nova pontuação](#adiciona-uma-nova-pontuação)
