@@ -109,6 +109,18 @@ $test = $mk->courses();
 $test = $mk->course($course_id);
 ```
 
+### Retorna dados básicos do curso com módulos e respectivas aulas
+
+| Parâmetro    | Descrição            |
+|--------------|----------------------|
+| course_id | ID do Curso |
+| lesson_id | ID da Aula |
+
+```php
+<?php
+$test = $mk->lesson($course_id, $lesson_id);
+```
+
 ### Gera um novo token de autenticação com duração de 1 hora
 
 | Parâmetro    | Descrição            |
