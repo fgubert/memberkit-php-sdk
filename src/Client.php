@@ -77,7 +77,7 @@ class Client {
      *
      * @return string
      */
-	protected function getURL($method='POST', $type=null, $id=null) {
+	protected function getURL($method='POST', $type=null, $id=null, $id2=null) {
 		$url = null;
 		switch ($type) {
 			case 'newUser':
@@ -111,6 +111,10 @@ class Client {
             case 'course':
                 $url = self::BASE_URI.'courses/'.$id;
                 break;
+			
+			case 'lessons':
+				$url = self::BASE_URI.'courses/'.$id.'/lessons/'.$id2;
+				break;
 
 			case 'token':
 				$url = self::BASE_URI.'tokens';
@@ -172,15 +176,16 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 201) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -201,16 +206,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 201) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -237,16 +243,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 201) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -271,16 +278,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 201) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -302,16 +310,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 201) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -326,16 +335,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 200) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -350,16 +360,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 200) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -373,16 +384,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 200) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
 	/**
@@ -398,16 +410,17 @@ class Client {
 		$code = $response->getStatusCode();
 		$body = (string)$response->getBody();
 
-		$this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+		$ret['code'] = $code;
 
 		if ($code == 200) {
-			$this->return_msg['message'] = 'success';
-			$this->return_msg['content'] = json_decode($body);
-			$this->return_msg['status'] = true;
+			$ret['message'] = 'success';
+			$ret['content'] = json_decode($body);
+			$ret['status'] = true;
 		} else {
-			$this->return_msg['message'] = json_decode($body);
+			$ret['message'] = json_decode($body);
 		}
-		return $this->return_msg;
+		return $ret;
 	}
 
     /**
@@ -423,16 +436,17 @@ class Client {
         $code = $response->getStatusCode();
         $body = (string)$response->getBody();
 
-        $this->return_msg['code'] = $code;
+		$ret = ['content'=>null, 'status'=>false];
+        $ret['code'] = $code;
 
         if ($code == 200) {
-            $this->return_msg['message'] = 'success';
-            $this->return_msg['content'] = json_decode($body);
-            $this->return_msg['status'] = true;
+            $ret['message'] = 'success';
+            $ret['content'] = json_decode($body);
+            $ret['status'] = true;
         } else {
-            $this->return_msg['message'] = json_decode($body);
+            $ret['message'] = json_decode($body);
         }
-        return $this->return_msg;
+        return $ret;
     }
 
     /**
@@ -442,28 +456,31 @@ class Client {
      */
     public function courses($currentPage=null)
     {
-        if (!empty($currentPage)) {
-            $request = new Request('GET', $this->getURL('GET', 'courses').'&page='.$currentPage, $this->getOptions($this->form_params), null);
-        } else {
-            $request = new Request('GET', $this->getURL('GET', 'courses'), $this->getOptions($this->form_params), null);
-        }
+		
+		$url = $this->getURL('GET', 'courses');
+        if (!empty($currentPage))
+            $url = $url.'&page='.$currentPage;
+
+		$request = new Request('GET', $url, $this->getOptions($this->form_params), null);
 
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
         $code = $response->getStatusCode();
         $body = (string)$response->getBody();
 
-        $this->return_msg['code'] = $code;
-
+		$ret = ['content'=>null, 'status'=>false];
+        $ret['code'] = $code;
 
         if ($code == 200) {
-            $this->return_msg['message'] = 'success';
-            $this->return_msg['content'] = json_decode($body);
-            $this->return_msg['status'] = true;
+            $ret['message'] = 'success';
+            $ret['content'] = json_decode($body);
+            $ret['status'] = true;
         } else {
-            $this->return_msg['message'] = json_decode($body);
+            $ret['message'] = json_decode($body);
+			$ret['content'] = null;
+			$ret['status'] = false;
         }
-        return $this->return_msg;
+        return $ret;
     }
 
     /**
@@ -479,23 +496,49 @@ class Client {
         $code = $response->getStatusCode();
         $body = (string)$response->getBody();
 
-        $this->return_msg['code'] = $code;
-
+		$ret = ['content'=>null, 'status'=>false];
+        $ret['code'] = $code;
 
         if ($code == 200) {
-            $this->return_msg['message'] = 'success';
-            $this->return_msg['content'] = json_decode($body);
-            $this->return_msg['status'] = true;
+            $ret['message'] = 'success';
+            $ret['content'] = json_decode($body);
+            $ret['status'] = true;
         } else {
-            $this->return_msg['message'] = json_decode($body);
+            $ret['message'] = json_decode($body);
+			$ret['content'] = null;
+			$ret['status'] = false;
         }
-        return $this->return_msg;
+        return $ret;
     }
 
+	/**
+     * @param int $course_id
+	 * @param int $lessons_id
+     * Retorna os dados de uma aula em específico
+     * @return array
+     */
+    public function lesson($course_id, $lesson_id)
+    {
+		// avoid too many requests (120/min)
+		usleep(31000);
+        $request = new Request('GET', $this->getURL('GET', 'lessons', $course_id, $lesson_id), $this->getOptions($this->form_params), null);
+        $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 
+        $code = $response->getStatusCode();
+        $body = (string)$response->getBody();
 
+		$ret = ['content'=>null, 'status'=>false];
+        $ret['code'] = $code;
 
-
-
-
+        if ($code == 200) {
+            $ret['message'] = 'success';
+            $ret['content'] = json_decode($body);
+            $ret['status'] = true;
+        } else {
+            $ret['message'] = json_decode($body);
+			$ret['content'] = null;
+			$ret['status'] = false;
+        }
+        return $ret;
+    }
 }
