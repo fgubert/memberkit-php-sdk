@@ -109,7 +109,7 @@ $test = $mk->courses();
 $test = $mk->course($course_id);
 ```
 
-### Retorna dados básicos do curso com módulos e respectivas aulas
+### Retorna dados completo de uma aula específica
 
 | Parâmetro    | Descrição            |
 |--------------|----------------------|
