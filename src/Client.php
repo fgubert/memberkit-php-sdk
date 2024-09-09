@@ -519,8 +519,6 @@ class Client {
      */
     public function lesson($course_id, $lesson_id)
     {
-		// avoid too many requests (120/min)
-		usleep(31000);
         $request = new Request('GET', $this->getURL('GET', 'lessons', $course_id, $lesson_id), $this->getOptions($this->form_params), null);
         $response = $this->http->send($request, $this->getOptions($this->form_params), null);
 

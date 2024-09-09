@@ -4,5 +4,5 @@ namespace MemberKit;
 
 class MemberKit
 {
-    const VERSION = '0.1.6';
+    const VERSION = '0.2.0';
 }
